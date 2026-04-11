@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SentimentAI - Advanced Sentiment Analysis</title>
+    <meta name="description" content="A premium web app for sentiment analysis powered by a machine learning model.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="background-glob glob-1"></div>
+    <div class="background-glob glob-2"></div>
+    
+    <main class="container">
+        <header>
+            <div class="logo">
+                <i data-lucide="sparkles" class="icon-primary"></i>
+                <h1>SentimentAI</h1>
+            </div>
+            <p class="subtitle">Understand the emotion behind your text in real time.</p>
+        </header>
+
+        <section class="card glass">
+            <div class="input-section">
+                <label for="text-input" class="visually-hidden">Text to analyze</label>
+                <textarea 
+                    id="text-input" 
+                    placeholder="Type or paste your text here to analyze its sentiment... (e.g., 'I absolutely loved the service today!')"
+                    rows="5"
+                ></textarea>
+                
+                <div class="controls">
+                    <span class="char-count" id="char-count">0 characters</span>
+                    <button id="analyze-btn" class="primary-btn">
+                        <span>Analyze Sentiment</span>
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading" class="state-container hidden">
+                <div class="spinner"></div>
+                <p>Analyzing text with our neural model...</p>
+            </div>
+
+            <!-- Result State -->
+            <div id="result-section" class="state-container hidden">
+                <div class="result-header">
+                    <h2>Analysis Result</h2>
+                    <div id="sentiment-badge" class="badge">Positive</div>
+                </div>
+                
+                <div class="probabilities">
+                    <div class="prob-bar-container">
+                        <div class="prob-info">
+                            <span class="prob-label">Positive</span>
+                            <span class="prob-value" id="val-positive">0%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill fill-positive" id="bar-positive"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="prob-bar-container">
+                        <div class="prob-info">
+                            <span class="prob-label">Neutral</span>
+                            <span class="prob-value" id="val-neutral">0%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill fill-neutral" id="bar-neutral"></div>
+                        </div>
+                    </div>
+
+                    <div class="prob-bar-container">
+                        <div class="prob-info">
+                            <span class="prob-label">Negative</span>
+                            <span class="prob-value" id="val-negative">0%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill fill-negative" id="bar-negative"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="reset-btn" class="secondary-btn">Analyze Another</button>
+            </div>
+
+            <!-- Error State -->
+            <div id="error-section" class="state-container hidden">
+                <i data-lucide="alert-circle" class="error-icon"></i>
+                <h2 class="error-text">Oops! Something went wrong</h2>
+                <p id="error-message">Could not connect to the analysis engine.</p>
+                <button id="retry-btn" class="secondary-btn">Try Again</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
